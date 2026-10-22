@@ -1,18 +1,28 @@
-
+const choices = ['rock','paper','scissors']
 function getComputerChoice() {
-    const randomNumber = Math.random();
+   const randomNum = Math.floor(Math.random()*3)
 
-    if (randomNumber < 1 / 3) {
-        return "rock";
-    } else if (randomNumber < 2 / 3) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
+   return choices[randomNum]
 }
 
 function getHumanChoice() {
-    return prompt("Choose rock, paper, or scissors").toLowerCase();
+while (true) {
+        const humanChoice = prompt("Enter: rock, paper, or scissors");
+
+        // Handle Cancel
+        if (humanChoice === null) {
+            return null;
+        }
+
+        const normalizedhumanChoice = humanChoice.trim().toLowerCase();
+
+        if (choices.includes(normalizedhumanChoice)) {
+            return normalizedhumanChoice;
+        }
+
+        alert("Invalid choice! Enter rock, paper, or scissors.");
+    }
+    
 }
 
 function playGame() {
